@@ -9,18 +9,12 @@ body, html {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  height: 100%;
-  overflow-x: hidden;
+  background: #f4f4f4;
 }
-
-/* 全画面背景画像 */
-.bg-img {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* 縦横比を保って拡大縮小 */
-  z-index: -1; /* 背景として配置 */
+body.locked {
+  /* 高解像度コロッセオ背景（Unsplash直リンク） */
+  background: url('images/italy.jpg')
+    no-repeat center center/cover;
 }
 
 /* パスワード画面 */
@@ -30,7 +24,7 @@ body, html {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  backdrop-filter: blur(4px); /* 背景ぼかし */
+  backdrop-filter: blur(4px);
 }
 #passwordScreen input {
   padding: 10px;
@@ -133,10 +127,7 @@ body, html {
 }
 </style>
 </head>
-<body>
-
-<!-- 全画面背景画像 -->
-<img src="images/italy.jpg" alt="イタリアの街並み" class="bg-img">
+<body class="locked">
 
 <!-- パスワード画面 -->
 <div id="passwordScreen">
@@ -198,6 +189,7 @@ function checkPassword() {
   if (pass === "0616") {
     document.getElementById("passwordScreen").style.display = "none";
     document.getElementById("shiori").style.display = "block";
+    document.body.classList.remove("locked");
   } else {
     alert("パスワードが違います");
   }
