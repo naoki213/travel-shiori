@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>旅のしおり</title>
 <style>
-/* ====== 基本設定 ====== */
 body, html {
   margin: 0;
   padding: 0;
@@ -13,10 +12,12 @@ body, html {
   background: #f4f4f4;
 }
 body.locked {
-  background: url(' https://www.google.com/url?sa=i&url=https%3A%2F%2Fsmartlog.jp%2F137505&psig=AOvVaw0UTF8cdzOoEwVk5kA1TkCi&ust=1754537757426000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCJCUi9Cg9Y4DFQAAAAAdAAAAABAE') no-repeat center center/cover;
+  /* ご提供の画像URLを背景に設定 */
+  background: url('https://smartlog‑stat2.imgix.net/uploads/content/piece/2018/6/fb8a0f264000ff1e7ba10f98256a4094/イタリア１.jpg?w=640&h=426&auto=format,compress&q=40') 
+    no-repeat center center/cover;
 }
 
-/* ====== パスワード画面 ====== */
+/* ▼ パスワード画面 */
 #passwordScreen {
   display: flex;
   flex-direction: column;
@@ -42,7 +43,7 @@ body.locked {
   cursor: pointer;
 }
 
-/* ====== しおり画面 ====== */
+/* ▼ しおり画面 */
 #shiori {
   display: none;
 }
@@ -71,7 +72,7 @@ body.locked {
   color: white;
 }
 
-/* 予定カード */
+/* ▼ 予定カード */
 .dayContent {
   display: none;
   padding: 10px;
@@ -93,7 +94,7 @@ body.locked {
   font-size: 14px;
 }
 
-/* ====== 詳細モーダル ====== */
+/* ▼ 詳細モーダル */
 #detailModal {
   display: none;
   position: fixed;
@@ -128,16 +129,16 @@ body.locked {
 </head>
 <body class="locked">
 
-<!-- ====== パスワード画面 ====== -->
+<!-- パスワード画面 -->
 <div id="passwordScreen">
   <input type="password" id="passwordInput" placeholder="パスワードを入力">
   <button onclick="checkPassword()">開く</button>
 </div>
 
-<!-- ====== しおり画面 ====== -->
+<!-- しおり画面 -->
 <div id="shiori">
 
-  <!-- 日付切り替え -->
+  <!-- 日付切り替えナビ -->
   <div id="dayNav">
     <button onclick="showDay(1)" class="active">1日目</button>
     <button onclick="showDay(2)">2日目</button>
@@ -146,27 +147,23 @@ body.locked {
 
   <!-- 1日目 -->
   <div id="day1" class="dayContent" style="display:block;">
-    <div class="card" onclick="showDetail('東京駅 出発', '09:00 新幹線で東京から出発', 'img/tokyo_station.jpg', 'https://maps.google.com/?q=東京駅')">
+    <div class="card" onclick="showDetail('東京駅 出発', '09:00 新幹線で東京から出発', 'https://smartlog‑stat2.imgix.net/uploads/content/piece/2018/6/fb8a0f264000ff1e7ba10f98256a4094/イタリア１.jpg?w=640&h=426', 'https://maps.google.com/?q=東京駅')">
       <h3>東京駅 出発</h3>
       <p>09:00 新幹線で東京から出発</p>
     </div>
-    <div class="card" onclick="showDetail('浅草観光', '浅草寺・仲見世通りを散策し、雷門で記念撮影', 'img/asakusa.jpg', 'https://maps.google.com/?q=浅草寺')">
+    <div class="card" onclick="showDetail('浅草観光', '10:30 浅草寺・仲見世通りを散策。雷門で記念撮影', 'https://smartlog‑stat2.imgix.net/uploads/content/piece/2018/6/fb8a0f264000ff1e7ba10f98256a4094/イタリア１.jpg?w=640&h=426', 'https://maps.google.com/?q=浅草寺')">
       <h3>浅草観光</h3>
       <p>10:30 浅草寺・仲見世通りを散策</p>
-    </div>
-    <div class="card" onclick="showDetail('東京スカイツリー', '展望台から東京を一望できるスポット', 'img/skytree.jpg', 'https://maps.google.com/?q=東京スカイツリー')">
-      <h3>東京スカイツリー</h3>
-      <p>14:00 展望台で東京を一望</p>
     </div>
   </div>
 
   <!-- 2日目 -->
   <div id="day2" class="dayContent">
-    <div class="card" onclick="showDetail('上野動物園', 'パンダやゾウを見学できます。混雑が予想されるため早めの到着推奨', 'img/ueno_zoo.jpg', 'https://maps.google.com/?q=上野動物園')">
+    <div class="card" onclick="showDetail('上野動物園', '10:00 パンダやゾウを見学。混雑が予想されるので早めの到着推奨', 'https://smartlog‑stat2.imgix.net/uploads/content/piece/2018/6/fb8a0f264000ff1e7ba10f98256a4094/イタリア１.jpg?w=640&h=426', 'https://maps.google.com/?q=上野動物園')">
       <h3>上野動物園</h3>
       <p>10:00 パンダを見学</p>
     </div>
-    <div class="card" onclick="showDetail('アメ横散策', '食べ歩きやショッピングを楽しめる商店街', 'img/ameyoko.jpg', 'https://maps.google.com/?q=アメ横')">
+    <div class="card" onclick="showDetail('アメ横散策', '12:00 食べ歩き＆ショッピングが楽しめる商店街', 'https://smartlog‑stat2.imgix.net/uploads/content/piece/2018/6/fb8a0f264000ff1e7ba10f98256a4094/イタリア１.jpg?w=640&h=426', 'https://maps.google.com/?q=アメ横')">
       <h3>アメ横散策</h3>
       <p>12:00 食べ歩き・ショッピング</p>
     </div>
@@ -174,19 +171,19 @@ body.locked {
 
   <!-- 3日目 -->
   <div id="day3" class="dayContent">
-    <div class="card" onclick="showDetail('皇居外苑', '美しい庭園と二重橋を散策。写真スポット多数あり', 'img/kokyo.jpg', 'https://maps.google.com/?q=皇居外苑')">
+    <div class="card" onclick="showDetail('皇居外苑', '09:00 美しい庭園と二重橋を散策。写真スポット多数', 'https://smartlog‑stat2.imgix.net/uploads/content/piece/2018/6/fb8a0f264000ff1e7ba10f98256a4094/イタリア１.jpg?w=640&h=426', 'https://maps.google.com/?q=皇居外苑')">
       <h3>皇居外苑</h3>
       <p>09:00 散策と記念撮影</p>
     </div>
-    <div class="card" onclick="showDetail('銀座ショッピング', 'ブランドショップ巡りとカフェで休憩', 'img/ginza.jpg', 'https://maps.google.com/?q=銀座')">
+    <div class="card" onclick="showDetail('銀座ショッピング', '12:00 ブランドショップ巡り＆カフェ休憩', 'https://smartlog‑stat2.imgix.net/uploads/content/piece/2018/6/fb8a0f264000ff1e7ba10f98256a4094/イタリア１.jpg?w=640&h=426', 'https://maps.google.com/?q=銀座')">
       <h3>銀座ショッピング</h3>
-      <p>12:00 ブランドショップ巡り</p>
+      <p>12:00 多彩なブランド店とカフェ</p>
     </div>
   </div>
 
 </div>
 
-<!-- ====== 詳細モーダル ====== -->
+<!-- 詳細モーダル -->
 <div id="detailModal" onclick="closeDetail(event)">
   <div id="detailModalContent">
     <button class="closeBtn" onclick="closeDetail(event)">閉じる</button>
@@ -210,25 +207,23 @@ function checkPassword() {
 }
 
 function showDay(day) {
-  document.querySelectorAll(".dayContent").forEach(div => div.style.display = "none");
-  document.getElementById("day" + day).style.display = "block";
-  document.querySelectorAll("#dayNav button").forEach(btn => btn.classList.remove("active"));
-  document.querySelector(`#dayNav button:nth-child(${day})`).classList.add("active");
+  document.querySelectorAll('.dayContent').forEach(div => div.style.display = 'none');
+  document.getElementById('day' + day).style.display = 'block';
+  document.querySelectorAll('#dayNav button').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`#dayNav button:nth-child(${day})`).classList.add('active');
 }
 
-// 詳細モーダル表示
 function showDetail(title, text, image, mapUrl) {
-  document.getElementById("detailTitle").textContent = title;
-  document.getElementById("detailText").textContent = text;
-  document.getElementById("detailImage").src = image;
-  document.getElementById("detailMap").href = mapUrl;
-  document.getElementById("detailModal").style.display = "block";
+  document.getElementById('detailTitle').textContent = title;
+  document.getElementById('detailText').textContent = text;
+  document.getElementById('detailImage').src = image;
+  document.getElementById('detailMap').href = mapUrl;
+  document.getElementById('detailModal').style.display = 'block';
 }
 
-// モーダル閉じる
 function closeDetail(e) {
-  if (e.target.id === "detailModal" || e.target.classList.contains("closeBtn")) {
-    document.getElementById("detailModal").style.display = "none";
+  if (e.target.id === 'detailModal' || e.target.classList.contains('closeBtn')) {
+    document.getElementById('detailModal').style.display = 'none';
   }
 }
 </script>
