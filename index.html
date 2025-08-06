@@ -12,16 +12,12 @@ body, html {
   background: #f4f4f4;
 }
 body.locked {
-  background: url('https://images.unsplash.com/photo-1562182389-ff6e97d2b5a1?w=1600&h=900&fit=crop') 
+  /* コロッセオの背景画像（ご提供のUnsplashリンク） */
+  background: url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8%25E3%2582%25A4%25E3%2582%25BF%25E3%2583%25AA%25E3%2582%25A2JUUzJTgyJUE0JUUzJTgyJUJGJUUzJTgzJUFBJUUzJTgyJUEyfGVufDB8fDB8fHww')
     no-repeat center center/cover;
 }
 
-}
-
-}
-}
-
-/* ▼ パスワード画面 */
+/* パスワード画面 */
 #passwordScreen {
   display: flex;
   flex-direction: column;
@@ -47,12 +43,12 @@ body.locked {
   cursor: pointer;
 }
 
-/* ▼ しおり画面 */
+/* しおり画面 */
 #shiori {
   display: none;
 }
 
-/* 上部固定ボタン */
+/* 日付ナビ */
 #dayNav {
   position: sticky;
   top: 0;
@@ -76,7 +72,7 @@ body.locked {
   color: white;
 }
 
-/* ▼ 予定カード */
+/* 予定カード */
 .dayContent {
   display: none;
   padding: 10px;
@@ -98,7 +94,7 @@ body.locked {
   font-size: 14px;
 }
 
-/* ▼ 詳細モーダル */
+/* 詳細モーダル */
 #detailModal {
   display: none;
   position: fixed;
@@ -141,8 +137,6 @@ body.locked {
 
 <!-- しおり画面 -->
 <div id="shiori">
-
-  <!-- 日付切り替えナビ -->
   <div id="dayNav">
     <button onclick="showDay(1)" class="active">1日目</button>
     <button onclick="showDay(2)">2日目</button>
@@ -151,11 +145,11 @@ body.locked {
 
   <!-- 1日目 -->
   <div id="day1" class="dayContent" style="display:block;">
-    <div class="card" onclick="showDetail('東京駅 出発', '09:00 新幹線で東京から出発', 'https://smartlog‑stat2.imgix.net/uploads/content/piece/2018/6/fb8a0f264000ff1e7ba10f98256a4094/イタリア１.jpg?w=640&h=426', 'https://maps.google.com/?q=東京駅')">
+    <div class="card" onclick="showDetail('東京駅 出発', '09:00 新幹線で東京から出発', '', 'https://maps.google.com/?q=東京駅')">
       <h3>東京駅 出発</h3>
       <p>09:00 新幹線で東京から出発</p>
     </div>
-    <div class="card" onclick="showDetail('浅草観光', '10:30 浅草寺・仲見世通りを散策。雷門で記念撮影', 'https://smartlog‑stat2.imgix.net/uploads/content/piece/2018/6/fb8a0f264000ff1e7ba10f98256a4094/イタリア１.jpg?w=640&h=426', 'https://maps.google.com/?q=浅草寺')">
+    <div class="card" onclick="showDetail('浅草観光', '10:30 浅草寺・仲見世通りを散策', '', 'https://maps.google.com/?q=浅草寺')">
       <h3>浅草観光</h3>
       <p>10:30 浅草寺・仲見世通りを散策</p>
     </div>
@@ -163,28 +157,19 @@ body.locked {
 
   <!-- 2日目 -->
   <div id="day2" class="dayContent">
-    <div class="card" onclick="showDetail('上野動物園', '10:00 パンダやゾウを見学。混雑が予想されるので早めの到着推奨', 'https://smartlog‑stat2.imgix.net/uploads/content/piece/2018/6/fb8a0f264000ff1e7ba10f98256a4094/イタリア１.jpg?w=640&h=426', 'https://maps.google.com/?q=上野動物園')">
+    <div class="card" onclick="showDetail('上野動物園', '10:00 パンダを見学', '', 'https://maps.google.com/?q=上野動物園')">
       <h3>上野動物園</h3>
       <p>10:00 パンダを見学</p>
-    </div>
-    <div class="card" onclick="showDetail('アメ横散策', '12:00 食べ歩き＆ショッピングが楽しめる商店街', 'https://smartlog‑stat2.imgix.net/uploads/content/piece/2018/6/fb8a0f264000ff1e7ba10f98256a4094/イタリア１.jpg?w=640&h=426', 'https://maps.google.com/?q=アメ横')">
-      <h3>アメ横散策</h3>
-      <p>12:00 食べ歩き・ショッピング</p>
     </div>
   </div>
 
   <!-- 3日目 -->
   <div id="day3" class="dayContent">
-    <div class="card" onclick="showDetail('皇居外苑', '09:00 美しい庭園と二重橋を散策。写真スポット多数', 'https://smartlog‑stat2.imgix.net/uploads/content/piece/2018/6/fb8a0f264000ff1e7ba10f98256a4094/イタリア１.jpg?w=640&h=426', 'https://maps.google.com/?q=皇居外苑')">
+    <div class="card" onclick="showDetail('皇居外苑', '09:00 美しい庭園と二重橋を散策', '', 'https://maps.google.com/?q=皇居外苑')">
       <h3>皇居外苑</h3>
-      <p>09:00 散策と記念撮影</p>
-    </div>
-    <div class="card" onclick="showDetail('銀座ショッピング', '12:00 ブランドショップ巡り＆カフェ休憩', 'https://smartlog‑stat2.imgix.net/uploads/content/piece/2018/6/fb8a0f264000ff1e7ba10f98256a4094/イタリア１.jpg?w=640&h=426', 'https://maps.google.com/?q=銀座')">
-      <h3>銀座ショッピング</h3>
-      <p>12:00 多彩なブランド店とカフェ</p>
+      <p>09:00 美しい庭園と二重橋を散策</p>
     </div>
   </div>
-
 </div>
 
 <!-- 詳細モーダル -->
@@ -234,7 +219,5 @@ function closeDetail(e) {
 
 </body>
 </html>
-
-
 
 
