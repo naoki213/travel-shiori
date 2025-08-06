@@ -9,12 +9,18 @@ body, html {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #f4f4f4;
+  height: 100%;
+  overflow-x: hidden;
 }
-body.locked {
-  /* コロッセオの背景画像（ご提供のUnsplashリンク） */
-  background: url('jack-ward-rknrvCrfS1k-unsplash.jpg')
-    no-repeat center center/cover;
+
+/* 全画面背景画像 */
+.bg-img {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 縦横比を保って拡大縮小 */
+  z-index: -1; /* 背景として配置 */
 }
 
 /* パスワード画面 */
@@ -24,7 +30,7 @@ body.locked {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px); /* 背景ぼかし */
 }
 #passwordScreen input {
   padding: 10px;
@@ -127,7 +133,10 @@ body.locked {
 }
 </style>
 </head>
-<body class="locked">
+<body>
+
+<!-- 全画面背景画像 -->
+<img src="images/italy.jpg" alt="イタリアの街並み" class="bg-img">
 
 <!-- パスワード画面 -->
 <div id="passwordScreen">
@@ -149,7 +158,7 @@ body.locked {
       <h3>東京駅 出発</h3>
       <p>09:00 新幹線で東京から出発</p>
     </div>
-    <div class="card" onclick="showDetail('浅草観光', '10:30 浅草寺・仲見世通りを散策', '', 'https://maps.google.com/?q=浅草寺')">
+    <div class="card" onclick="showDetail('浅草観光', '浅草寺・仲見世通りを散策', '', 'https://maps.google.com/?q=浅草寺')">
       <h3>浅草観光</h3>
       <p>10:30 浅草寺・仲見世通りを散策</p>
     </div>
@@ -157,7 +166,7 @@ body.locked {
 
   <!-- 2日目 -->
   <div id="day2" class="dayContent">
-    <div class="card" onclick="showDetail('上野動物園', '10:00 パンダを見学', '', 'https://maps.google.com/?q=上野動物園')">
+    <div class="card" onclick="showDetail('上野動物園', 'パンダを見学', '', 'https://maps.google.com/?q=上野動物園')">
       <h3>上野動物園</h3>
       <p>10:00 パンダを見学</p>
     </div>
@@ -165,9 +174,9 @@ body.locked {
 
   <!-- 3日目 -->
   <div id="day3" class="dayContent">
-    <div class="card" onclick="showDetail('皇居外苑', '09:00 美しい庭園と二重橋を散策', '', 'https://maps.google.com/?q=皇居外苑')">
+    <div class="card" onclick="showDetail('皇居外苑', '美しい庭園と二重橋を散策', '', 'https://maps.google.com/?q=皇居外苑')">
       <h3>皇居外苑</h3>
-      <p>09:00 美しい庭園と二重橋を散策</p>
+      <p>09:00 散策と記念撮影</p>
     </div>
   </div>
 </div>
@@ -189,36 +198,32 @@ function checkPassword() {
   if (pass === "0616") {
     document.getElementById("passwordScreen").style.display = "none";
     document.getElementById("shiori").style.display = "block";
-    document.body.classList.remove("locked");
   } else {
     alert("パスワードが違います");
   }
 }
 
 function showDay(day) {
-  document.querySelectorAll('.dayContent').forEach(div => div.style.display = 'none');
-  document.getElementById('day' + day).style.display = 'block';
-  document.querySelectorAll('#dayNav button').forEach(btn => btn.classList.remove('active'));
-  document.querySelector(`#dayNav button:nth-child(${day})`).classList.add('active');
+  document.querySelectorAll(".dayContent").forEach(div => div.style.display = "none");
+  document.getElementById("day" + day).style.display = "block";
+  document.querySelectorAll("#dayNav button").forEach(btn => btn.classList.remove("active"));
+  document.querySelector(`#dayNav button:nth-child(${day})`).classList.add("active");
 }
 
 function showDetail(title, text, image, mapUrl) {
-  document.getElementById('detailTitle').textContent = title;
-  document.getElementById('detailText').textContent = text;
-  document.getElementById('detailImage').src = image;
-  document.getElementById('detailMap').href = mapUrl;
-  document.getElementById('detailModal').style.display = 'block';
+  document.getElementById("detailTitle").textContent = title;
+  document.getElementById("detailText").textContent = text;
+  document.getElementById("detailImage").src = image;
+  document.getElementById("detailMap").href = mapUrl;
+  document.getElementById("detailModal").style.display = "block";
 }
 
 function closeDetail(e) {
-  if (e.target.id === 'detailModal' || e.target.classList.contains('closeBtn')) {
-    document.getElementById('detailModal').style.display = 'none';
+  if (e.target.id === "detailModal" || e.target.classList.contains("closeBtn")) {
+    document.getElementById("detailModal").style.display = "none";
   }
 }
 </script>
 
 </body>
 </html>
-
-
-
